@@ -104,6 +104,11 @@ body {
     background-color: #DEDEDE;
 }
 
+#wrapper {
+    width: 956px;
+    margin: 0 auto;
+}
+
 #letter {
     margin: 5rem auto;
     background: url('../img/LetterBG.png');
@@ -131,13 +136,18 @@ body {
     bottom: -20px;
 }
 
-h1, h2, h3, h4, h5, h6,
-p, a {
-    font-family: typewriter, "Times New Roman", Georgia, Serif;
-    color: #636262;
+h2, h3, h4, h5, h6,
+p, a, span {
+    font-family: typewriter, serif, sans-serif;
+    color: #858484;
 }
 
-#letter h1 {
+h1 {
+    font-family: serif, sans-serif;
+    text-align: center;
+}
+
+#letter h2 {
     text-align: center;
     padding-top: 2em;
 }
