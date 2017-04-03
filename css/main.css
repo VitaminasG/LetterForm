@@ -101,19 +101,19 @@ textarea {
    ========================================================================== */
 
 body {
-    background-color: #DEDEDE;
+    background-color: #a1de67;
 }
 
 #wrapper {
-    width: 956px;
+    width: 70%;
     margin: 0 auto;
 }
 
 #letter {
     margin: 5rem auto;
+    padding: 2em;
     background: url('../img/LetterBG.png');
-    width: 50%;
-    height: 600px;
+    width: 80%;
     position: relative;
 }
 
@@ -139,17 +139,53 @@ body {
 h2, h3, h4, h5, h6,
 p, a, span {
     font-family: typewriter, serif, sans-serif;
-    color: #858484;
+    color: #4f585a;
+    font-weight: normal;
 }
 
 h1 {
-    font-family: serif, sans-serif;
+    font-family: Andale Mono, serif, sans-serif;
     text-align: center;
+    font-weight: normal;
+    color: #444444;
 }
 
 #letter h2 {
     text-align: center;
     padding-top: 2em;
+}
+
+form {
+    overflow: hidden;
+}
+
+input, textarea, button {
+    border: none;
+}
+
+input {
+    font-size: medium;
+    padding: 5px 0;
+    border-bottom: 5px solid transparent;
+    border-image: url('../img/border_input.png') 5 10.5 repeat;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+}
+
+button {
+    display: block;
+    background: url('../img/stamp.png') no-repeat;
+    padding: 1.5em;
+    margin-right: 2em;
+    font-family: typewriter, serif, sans-serif;
+    cursor: pointer;
+    float: right;
 }
 
 /* ==========================================================================

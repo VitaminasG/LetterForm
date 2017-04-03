@@ -24,28 +24,37 @@
 
         <div id="wrapper">
 
-            <h1>Hello, here is a Simple Form to send Message</h1>
+            <h1>Letter style UI contact form</h1>
 
             <div id="letter">
 
                 <h2>Send a Letter</h2>
 
                 <form action="">
+                    <p>Dear Sir/Madam,</p>
+
                     <p>
-                        <label for="name"><span>My name is :</span></label>
+                        <label for="name">My name </label>
                         <input type="text" id="name">
+
+                        <label for="email">and my email address is </label>
+                        <input type="email" id="email">
+                        .
                     </p>
 
                     <p>
-                        <label for="email"><span>My email address is :</span></label>
-                        <input type="email" id="email">
+                        <label for="msg"></label>
                     </p>
 
-                    <h3>
-                        <label for="msg">My Message :</label>
-                    </h3>
+                    <p>
+                        <textarea name="msg" id="msg" cols="50" rows="15" placeholder="I would like to asks you..."></textarea>
+                    </p>
 
-                    <textarea name="msg" id="msg" cols="30" rows="10"></textarea>
+                    <p>
+                        Kind regards
+                    </p>
+
+                    <button type="Submit" name="iButton">Send</button>
 
                 </form>
                 <div class="bottom"></div>
