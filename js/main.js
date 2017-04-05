@@ -2,41 +2,8 @@
 //////////////////////
 
 
-// Checking empty fields
-
-function emptyField(){
-    var errorMsg = "* field can not be empty.";
-    var inputElements = document.getElementsByTagName("input");
-    var flag = true;
-    var inputId, inputType, inputNode, spanTag;
-
-
-// collecting all input tags with id's and types
-
-    for (var i = 0; i < inputElements.length; i++){
-        inputId = inputElements[i].id;
-        inputType = inputElements[i].type;
-
-
-        if (inputType === "text" || inputType === "email"){
-            inputNode = document.getElementById(inputId);
-            if (inputNode.value === ""){
-                spanTag = document.createElement("span");
-                spanTag.className = "mandatory";
-                spanTag.innerHTML = errorMsg;
-                inputNode.parentNode.insertBefore(spanTag, inputNode.nextSibling);
-            } else {
-                falg = false;
-            }
-        }
-    }
-
-    return flag;
-}
-
 //Validating the name
-
-function Name(){
+function name(){
     var name = document.getElementById("name");
     var check = /^[a-zA-Z]+$/;
     var msg = document.createTextNode("* name must be written using only the letters.");
@@ -53,7 +20,7 @@ function Name(){
 function email(){
     var email = document.getElementById("email");
     var check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var msg = document.createTextNode("* incorrect email address!")
+    var msg = document.createTextNode("* incorrect email address!");
     var spanTag = document.createElement("span");
 
     if (!check.test(email.value)){
@@ -64,9 +31,9 @@ function email(){
 }
 
 // Collection of all function in the script;
-function init(){
+function clear(){
 
-// reseting erro messages;
+// reset error messages;
     var elem = document.getElementsByClassName("mandatory");
     for (var i = 0; i < elem.length; i++) {
         elem[i].style.display = "none";
@@ -79,15 +46,51 @@ function init(){
 }
 // end of reset;
 
-function Klick() {
-    document.getElementsByTagName("button").onclick = function () {
-        emptyField();
-        if (emptyField() !== true ){
-            init();
-            name();
-            email();
-        }
-    };
-}
+document.getElementById("submit").onclick = function () {
+    clear();
 
-window.onload = Klick;
+    var errorMsg = "* field can not be empty.";
+    var inputElements = document.getElementsByTagName("input");
+    var flag = true;
+    var inputId, inputType, inputNode, spanTag;
+
+
+// collecting all input tags with id's and types
+
+    for (var i = 0; i < inputElements.length; i++){
+        inputId = inputElements[i].id;
+        inputType = inputElements[i].type;
+
+
+        if (inputType === "text" || inputType === "email"){
+            inputNode = document.getElementById(inputId);
+            if (inputNode.value === null){
+                spanTag = document.createElement("span");
+                spanTag.className = "mandatory";
+                spanTag.innerHTML = errorMsg;
+                inputNode.parentNode.insertBefore(spanTag, inputNode.nextSibling);
+            } else {
+                flag = false;
+            }
+        }
+    }
+
+    if ( flag === false ){
+        clear();
+        name();
+        email();
+    }
+};
+
+// Adding additional functionality to name and email input
+var Name = document.getElementById("name");
+
+Name.addEventListener("blur", name, true);
+Name.addEventListener("focus", clear, true);
+
+// Issue. Need to fix. Working with name but not both
+
+// var Email = document.getElementById("email");
+//
+// Email.addEventListener("blur", email, true);
+// Email.addEventListener("focus", clear, true);

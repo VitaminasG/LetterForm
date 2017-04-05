@@ -190,7 +190,7 @@ button {
 
 /* Validation styling*/
 
-.regExError {
+.regExError, .mandatory {
     color: #ff9a78;
     font-size: 0.7em;
     padding-left: 1%;
