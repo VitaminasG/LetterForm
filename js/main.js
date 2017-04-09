@@ -1,61 +1,71 @@
+//////////////////////
 // Validating the form
 //////////////////////
 
 
-//Validating the name
+// Validating the name field;
+
 function name(){
     var name = document.getElementById("name");
     var check = /^[a-zA-Z]+$/;
     var msg = document.createTextNode("* name must be written using only the letters.");
-    var spanTag = document.createElement("span");
+    var listItem = document.createElement("li");
 
     if (!check.test(name.value)){
-        spanTag.className = "regExError";
-        spanTag.appendChild(msg);
-        name.parentNode.insertBefore(spanTag, name.nextSibling);
+        listItem.className = "regExError";
+        listItem.appendChild(msg);
+        document.getElementById("error").appendChild(listItem);
     }
 }
 
-// checking email field if it is correct;
+// Validating the email field;
+
 function email(){
     var email = document.getElementById("email");
     var check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var msg = document.createTextNode("* incorrect email address!");
-    var spanTag = document.createElement("span");
+    var listItem = document.createElement("li");
 
     if (!check.test(email.value)){
-        spanTag.className = "regExError";
-        spanTag.appendChild(msg);
-        email.parentNode.insertBefore(spanTag, email.nextSibling);
+        listItem.className = "regExError";
+        listItem.appendChild(msg);
+        document.getElementById("error").appendChild(listItem);
     }
 }
 
-// Collection of all function in the script;
+// End of validation;
+
+// Looping through all error message's and clearing;
+
 function clear(){
 
-// reset error messages;
+
     var elem = document.getElementsByClassName("mandatory");
     for (var i = 0; i < elem.length; i++) {
         elem[i].style.display = "none";
     }
 
     var elem2 = document.getElementsByClassName("regExError");
-    for (var j = 0; i < elem2.length; i++) {
+    for (var j = 0; j < elem2.length; j++) {
         elem2[j].style.display = "none";
     }
 }
 // end of reset;
 
+// Button click submit;
+
 document.getElementById("submit").onclick = function () {
+
     clear();
 
-    var errorMsg = "* field can not be empty.";
+    var errorMsg = document.createTextNode("* field's can not be empty.");
     var inputElements = document.getElementsByTagName("input");
     var flag = true;
-    var inputId, inputType, inputNode, spanTag;
+    var inputId, inputType, inputNode, listItem;
 
 
 // collecting all input tags with id's and types
+// which have empty fields;
 
     for (var i = 0; i < inputElements.length; i++){
         inputId = inputElements[i].id;
@@ -64,11 +74,11 @@ document.getElementById("submit").onclick = function () {
 
         if (inputType === "text" || inputType === "email"){
             inputNode = document.getElementById(inputId);
-            if (inputNode.value === null){
-                spanTag = document.createElement("span");
-                spanTag.className = "mandatory";
-                spanTag.innerHTML = errorMsg;
-                inputNode.parentNode.insertBefore(spanTag, inputNode.nextSibling);
+            if (inputNode.value === ""){
+                listItem = document.createElement("li");
+                listItem.className = "mandatory";
+                listItem.appendChild(errorMsg);
+                document.getElementById("error").appendChild(listItem);
             } else {
                 flag = false;
             }
@@ -82,15 +92,16 @@ document.getElementById("submit").onclick = function () {
     }
 };
 
-// Adding additional functionality to name and email input
+// End of click;
+
+// Adding additional functionality to name and email input;
+
 var Name = document.getElementById("name");
 
 Name.addEventListener("blur", name, true);
 Name.addEventListener("focus", clear, true);
 
-// Issue. Need to fix. Working with name but not both
+var Email = document.getElementById("email");
 
-// var Email = document.getElementById("email");
-//
-// Email.addEventListener("blur", email, true);
-// Email.addEventListener("focus", clear, true);
+Email.addEventListener("blur", email, true);
+Email.addEventListener("focus", clear, true);
