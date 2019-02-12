@@ -1,6 +1,6 @@
 # letterForm
 
-Simple Contact form with JavaScript Validation. Developed by using WebStorm IDE and HTML5 Boilerplate.
+Simple Contact form with Vanilla JavaScript Validation. Developed by using WebStorm IDE and HTML5 Boilerplate.
 
 ## ScreenShot
 
